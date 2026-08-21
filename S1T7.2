@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        // Edge case: empty array
+        if (nums.empty()) return 0;
+        
+        // Pointer 'i' tracks the position of the last unique element
+        int i = 0;
+        
+        // Pointer 'j' scans through the array starting from index 1
+        for (int j = 1; j < nums.size(); j++) {
+            // Found a new unique element
+            if (nums[j] != nums[i]) {
+                i++;  // Move the unique position forward
+                nums[i] = nums[j];  // Place the new unique element there
+            }
+            // If nums[j] == nums[i], it's a duplicate - skip it
+        }
+        
+        // Number of unique elements is i + 1
+        return i + 1;
+    }
+};
