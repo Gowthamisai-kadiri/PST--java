@@ -1,0 +1,18 @@
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        // Create result array
+        vector<int> result(2 * n);
+        
+        // Iterate through x elements (first half)
+        for (int i = 0; i < n; i++) {
+            result[2 * i] = nums[i];       // Place x1, x2, ... at even positions
+            result[2 * i + 1] = nums[n + i]; // Place y1, y2, ... at odd positions
+        }
+        
+        return result;
+    }
+};
