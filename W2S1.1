@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool halvesAreAlike(string s) {
+        int mid = s.length() / 2;
+        int countA = 0, countB = 0;
+
+        for (int i = 0; i < mid; i++) {
+            if (string("aeiouAEIOU").find(s[i]) != string::npos) {
+                countA++;
+            }
+        }
+
+        for (int i = mid; i < s.length(); i++) {
+            if (string("aeiouAEIOU").find(s[i]) != string::npos) {
+                countB++;
+            }
+        }
+
+        return countA == countB;
+    }
+};
