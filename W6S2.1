@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string twoStrings(string s1, string s2) {
+    bool present[26] = {false};
+
+    // Mark characters present in s1
+    for (char c : s1) {
+        present[c - 'a'] = true;
+    }
+
+    // Check if any character of s2 is also in s1
+    for (char c : s2) {
+        if (present[c - 'a']) {
+            return "YES";
+        }
+    }
+
+    return "NO";
+}
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        string s1, s2;
+        cin >> s1 >> s2;
+
+        cout << twoStrings(s1, s2) << endl;
+    }
+
+    return 0;
+}
