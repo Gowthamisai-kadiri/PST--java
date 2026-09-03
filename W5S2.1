@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> maxSubarray(vector<int> arr) {
+    int n = arr.size();
+
+    // Maximum subarray sum - Kadane's Algorithm
+    int current = arr[0];
+    int maxSub = arr[0];
+
+    for (int i = 1; i < n; i++) {
+        current = max(arr[i], current + arr[i]);
+        maxSub = max(maxSub, current);
+    }
+
+    // Maximum subsequence sum
+    int maxSeq = 0;
+    int maxElement = arr[0];
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            maxSeq += arr[i];
+        }
+
+        maxElement = max(maxElement, arr[i]);
+    }
+
+    // If all elements are negative
+    if (maxSeq == 0) {
+        maxSeq = maxElement;
+    }
+
+    return {maxSub, maxSeq};
+}
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        int n;
+        cin >> n;
+
+        vector<int> arr(n);
+
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+
+        vector<int> result = maxSubarray(arr);
+
+        cout << result[0] << " " << result[1] << endl;
+    }
+
+    return 0;
+}
