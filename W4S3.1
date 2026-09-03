@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string timeConversion(string s) {
+    int hour = stoi(s.substr(0, 2));
+
+    if (s[8] == 'A') {
+        if (hour == 12) {
+            hour = 0;
+        }
+    }
+    else {
+        if (hour != 12) {
+            hour += 12;
+        }
+    }
+
+    string ans = to_string(hour);
+
+    if (hour < 10) {
+        ans = "0" + ans;
+    }
+
+    ans += s.substr(2, 6);
+
+    return ans;
+}
+
+int main() {
+    string s;
+    cin >> s;
+
+    cout << timeConversion(s) << endl;
+
+    return 0;
+}
